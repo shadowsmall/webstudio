@@ -3,7 +3,8 @@
 **Un studio de création musicale qui tourne entièrement dans le navigateur, inspiré de FL Studio.**
 Beats, mélodies, arrangement, mixage, effets, automation, MIDI et export WAV, sans rien installer.
 
-> 📘 **Documentation complète** : ouvrez [`documentation.html`](documentation.html) (ou menu **AIDE › Documentation complète** dans l'application).
+> 📘 **Documentation complète** : ouvrez [`documentation.html`](documentation.html) (ou menu **AIDE › Documentation complète** dans l'application).                                 
+
 > site disponnible sans telechargement : https://shadowsmall.github.io/webstudio/
 
 ---
