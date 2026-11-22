@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WebStudio — Documentation complète</title>
+<style>
+:root{--bg:#2b3136;--panel:#3b4349;--panel2:#343b40;--line:#4f585f;--txt:#d9dee2;--dim:#9aa5ad;--acc:#e8892b;--acc2:#ffb15e;--ok:#7cc576;--warn:#e8c22b;--bad:#e05a4f}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:16px}
+body{margin:0;background:var(--bg);color:var(--txt);font:15px/1.6 "Segoe UI",system-ui,sans-serif}
+a{color:var(--acc2)}
+#side{position:fixed;top:0;left:0;bottom:0;width:280px;background:var(--panel2);border-right:1px solid var(--line);display:flex;flex-direction:column}
+#side header{padding:16px 16px 10px;border-bottom:1px solid var(--line)}
+#side header b{font-size:18px;color:var(--acc)}
+#side header small{display:block;color:var(--dim)}
+#q{width:100%;margin-top:10px;padding:7px 10px;border-radius:4px;border:1px solid var(--line);background:#23292d;color:var(--txt);font:inherit}
+#q:focus{outline:2px solid var(--acc);border-color:transparent}
+#qinfo{font-size:12px;color:var(--dim);min-height:18px;margin-top:4px}
+#toc{overflow:auto;padding:8px 0 20px;flex:1}
+#toc a{display:block;padding:4px 16px;color:var(--txt);text-decoration:none;border-left:3px solid transparent;font-size:14px}
+#toc a.sub{padding-left:30px;font-size:13px;color:var(--dim)}
+#toc a:hover{background:#2f363b}
+#toc a.on{border-left-color:var(--acc);color:var(--acc2);background:#2f363b}
+#toc a.hide{display:none}
+main{margin-left:280px;padding:28px 48px 80px;max-width:1080px}
+h1{font-size:30px;margin:0 0 6px;color:#fff}
+h1 span{color:var(--acc)}
+h2{font-size:23px;margin:46px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--acc);color:#fff}
+h3{font-size:18px;margin:28px 0 8px;color:var(--acc2)}
+h4{font-size:15px;margin:18px 0 6px;color:#fff}
+section.hide{display:none}
+p,li{max-width:900px}
+code{background:#23292d;padding:1px 5px;border-radius:3px;font:13px Consolas,monospace;color:#f3c99c}
+pre{background:#23292d;border:1px solid var(--line);border-radius:5px;padding:12px 14px;overflow:auto;font:13px/1.5 Consolas,monospace}
+pre code{background:none;padding:0}
+kbd{display:inline-block;min-width:22px;text-align:center;padding:1px 6px;border:1px solid #6b757c;border-bottom-width:3px;border-radius:4px;background:#4a535a;color:#fff;font:12px Consolas,monospace;white-space:nowrap}
+table{border-collapse:collapse;width:100%;margin:10px 0 18px;font-size:14px}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:var(--panel);color:var(--acc2)}
+tr:nth-child(even) td{background:#30373c}
+.box{border-left:4px solid var(--acc);background:var(--panel);padding:10px 14px;border-radius:0 5px 5px 0;margin:14px 0}
+.box.tip{border-color:var(--ok)}.box.warn{border-color:var(--warn)}.box.bad{border-color:var(--bad)}
+.box b:first-child{display:block;margin-bottom:2px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;margin:12px 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:12px 14px}
+.card h4{margin:0 0 4px;color:var(--acc2)}
+.card p{margin:0;font-size:14px;color:var(--dim)}
+.steps{counter-reset:s;list-style:none;padding:0}
+.steps li{counter-increment:s;position:relative;padding:4px 0 8px 40px}
+.steps li::before{content:counter(s);position:absolute;left:0;top:3px;width:26px;height:26px;border-radius:50%;background:var(--acc);color:#222;font-weight:700;text-align:center;line-height:26px}
+.badge{display:inline-block;font-size:11px;padding:0 6px;border-radius:9px;background:var(--acc);color:#222;font-weight:700;vertical-align:middle}
+details{background:var(--panel);border:1px solid var(--line);border-radius:5px;margin:8px 0;padding:0 14px}
+details summary{cursor:pointer;padding:9px 0;font-weight:600}
+details[open] summary{border-bottom:1px solid var(--line);margin-bottom:8px}
+mark{background:var(--acc);color:#111;border-radius:2px;padding:0 1px}
+#top{position:fixed;right:18px;bottom:18px;background:var(--acc);color:#222;border:0;border-radius:50%;width:40px;height:40px;font-size:20px;cursor:pointer;display:none}
+#menuBtn{display:none}
+footer{margin-top:60px;color:var(--dim);font-size:13px;border-top:1px solid var(--line);padding-top:12px}
+@media (max-width:900px){
+  #side{transform:translateX(-100%);transition:transform .2s;z-index:5;width:270px}
+  body.nav #side{transform:none}
+  main{margin-left:0;padding:60px 18px 60px}
+  #menuBtn{display:block;position:fixed;top:10px;left:10px;z-index:6;background:var(--acc);border:0;border-radius:4px;padding:6px 12px;font-weight:700;cursor:pointer}
+}
+@media print{
+  #side,#top,#menuBtn{display:none!important}
+  body{background:#fff;color:#000;font-size:11pt}
+  main{margin:0;padding:0;max-width:none}
+  section.hide{display:block}
+  h1,h2,h3,h4{color:#000}h2{border-color:#e8892b;page-break-after:avoid}
+  th{background:#eee;color:#000}td{background:#fff!important}
+  .box,.card,details{background:#fff;color:#000}
+  details{display:block}details>*{display:block}
+  code,pre{background:#f3f3f3;color:#000}
+  kbd{background:#fff;color:#000}
+  a{color:#000;text-decoration:none}
+}
+</style>
+</head>
+<body>
+<button id="menuBtn" type="button">☰ Sommaire</button>
+<nav id="side" aria-label="Sommaire">
+  <header>
+    <b>WebStudio</b><small>Documentation complète</small>
+    <input id="q" type="search" placeholder="Rechercher (ex. : sidechain, F4, micro)…" autocomplete="off">
+    <div id="qinfo"></div>
+  </header>
+  <div id="toc"></div>
+</nav>
+
+<main>
+<h1>Web<span>Studio</span> — documentation</h1>
+<p>Studio de musique qui fonctionne entièrement dans le navigateur, inspiré de l'ergonomie de FL Studio. Ce guide décrit <strong>toutes</strong> les fonctions de l'application, fenêtre par fenêtre. Utilisez la recherche à gauche pour trouver rapidement un sujet, ou imprimez la page (<kbd>Ctrl</kbd>+<kbd>P</kbd>) pour en garder une copie papier ou PDF.</p>
+
+<!-- ============================================================ -->
+<section id="presentation">
+<h2>1. Présentation</h2>
+<p>WebStudio est un séquenceur musical complet : boîte à rythmes pas à pas, synthétiseurs, piano roll, playlist pour arranger un morceau, table de mixage avec effets, automation, MIDI et export audio. Il ne nécessite <strong>aucune installation</strong> : un double-clic sur <code>index.html</code> suffit.</p>
+<div class="grid">
+  <div class="card"><h4>🥁 Channel Rack</h4><p>Séquenceur pas à pas, 23 instruments synthétisés, swing.</p></div>
+  <div class="card"><h4>🎼 Piano roll</h4><p>Mélodies et accords, gammes, outils de génération et de transformation.</p></div>
+  <div class="card"><h4>🎞️ Playlist</h4><p>32 pistes × 160 mesures pour arranger les patterns en morceau.</p></div>
+  <div class="card"><h4>🎚️ Mixer</h4><p>Master + 12 inserts, 27 effets, 9 chaînes prêtes à l'emploi.</p></div>
+  <div class="card"><h4>📈 Automation</h4><p>Clips qui font évoluer volumes, filtres et effets dans le temps.</p></div>
+  <div class="card"><h4>💾 Données sur le PC</h4><p>Sauvegarde automatique dans <code>Documents\WebStudio</code>.</p></div>
+</div>
+<h3 id="vocabulaire">Vocabulaire</h3>
+<table>
+<tr><th>Terme</th><th>Signification</th></tr>
+<tr><td>Canal</td><td>Un instrument du Channel Rack (une ligne de pas).</td></tr>
+<tr><td>Pas (step)</td><td>Une case du séquenceur : 1 pas = 1 double croche (16 pas par mesure).</td></tr>
+<tr><td>Pattern</td><td>Une boucle de 1 à 4 mesures contenant les pas et les notes de tous les canaux.</td></tr>
+<tr><td>Clip</td><td>Un pattern (ou une automation) posé dans la playlist.</td></tr>
+<tr><td>Insert</td><td>Une tranche de la table de mixage. Chaque canal est routé vers un insert.</td></tr>
+<tr><td>Send (envoi)</td><td>Copie du signal d'un insert vers un autre (ex. : réverbe partagée).</td></tr>
+<tr><td>Mode PAT / SONG</td><td>PAT joue le pattern sélectionné en boucle ; SONG joue la playlist entière.</td></tr>
+</table>
+</section>
+
+<!-- ============================================================ -->
+<section id="demarrage">
+<h2>2. Démarrage rapide</h2>
+<ol class="steps">
+<li>Ouvrez <code>index.html</code> avec <strong>Microsoft Edge</strong> ou <strong>Google Chrome</strong>.</li>
+<li>Au premier lancement, le <strong>message d'accueil</strong> propose de créer le dossier de données : cliquez sur <em>Choisir le dossier</em>, sélectionnez <code>Documents</code> puis acceptez. Le dossier <code>WebStudio</code> est créé automatiquement.</li>
+<li>Cliquez une fois dans la page (le navigateur n'autorise le son qu'après une interaction), puis appuyez sur <kbd>Espace</kbd> pour lancer la lecture.</li>
+<li>Dans le <strong>Channel Rack</strong> (<kbd>F6</kbd>), cliquez sur les pas pour créer un rythme.</li>
+<li>Cliquez sur le nom d'un synthé (ex. <em>Synth Lead</em>) puis ouvrez le <strong>Piano roll</strong> (<kbd>F7</kbd>) pour écrire une mélodie.</li>
+<li>Dans la <strong>Playlist</strong> (<kbd>F5</kbd>), posez vos patterns, passez en mode <strong>SONG</strong> (<kbd>L</kbd>) et écoutez le morceau.</li>
+<li>Exportez en WAV avec <kbd>Ctrl</kbd>+<kbd>R</kbd>. Le travail, lui, est enregistré tout seul.</li>
+</ol>
+<div class="box tip"><b>Astuce</b>Les lancements suivants affichent une fenêtre « Bon retour » : cliquez sur <strong>▶ Reprendre mon travail</strong> pour retrouver votre projet exactement là où vous l'aviez laissé.</div>
+</section>
+
+<!-- ============================================================ -->
+<section id="interface">
+<h2>3. L'interface</h2>
+<h3 id="barre-haut">Barre du haut</h3>
+<table>
+<tr><th>Élément</th><th>Rôle</th></tr>
+<tr><td>Menus</td><td><strong>FICHIER</strong>, <strong>ÉDITION</strong>, <strong>AJOUTER</strong>, <strong>PATTERNS</strong>, <strong>OUTILS</strong>, <strong>VUE</strong>, <strong>OPTIONS</strong>, <strong>AIDE</strong>.</td></tr>
+<tr><td>PAT / SONG</td><td>Choix du mode de lecture (raccourci <kbd>L</kbd>).</td></tr>
+<tr><td>▶ ■ ●</td><td>Lecture, stop, enregistrement. Avec ● actif, les notes jouées au clavier (ordinateur ou MIDI) pendant la lecture sont écrites dans le pattern.</td></tr>
+<tr><td>Tempo (écran LCD)</td><td>Molette pour changer le BPM d'une unité, ou cliquez et tapez une valeur (20 à 300 BPM).</td></tr>
+<tr><td>Position</td><td>Position de lecture au format <code>mesure:temps:pas</code>.</td></tr>
+<tr><td>♩ Métronome</td><td>Active le clic de métronome pendant la lecture.</td></tr>
+<tr><td>Master</td><td>Bouton rotatif du volume général.</td></tr>
+<tr><td>Sélecteur de pattern + bouton <strong>+</strong></td><td>Choisit le pattern en cours d'édition ; <strong>+</strong> en crée un nouveau. Clic droit : menu des patterns.</td></tr>
+<tr><td>Oscilloscope</td><td>Forme d'onde de la sortie en temps réel.</td></tr>
+<tr><td>Auto</td><td>Réorganise automatiquement les fenêtres à l'écran.</td></tr>
+<tr><td>🎙</td><td>Enregistre le micro dans un nouveau canal Sampler.</td></tr>
+<tr><td>⏺</td><td>Enregistre la sortie audio (fichier <code>.webm</code> ou <code>.ogg</code>).</td></tr>
+<tr><td>Tap</td><td>Tap tempo : tapez en rythme pour régler le BPM.</td></tr>
+<tr><td>Pastille 💾</td><td>État de l'enregistrement dans <code>Documents\WebStudio</code> (voir <a href="#donnees">Données</a>).</td></tr>
+</table>
+<h3 id="fenetres">Les fenêtres</h3>
+<p>Chaque fenêtre se déplace par sa barre de titre et peut être réduite, agrandie ou fermée. Clic droit sur la barre de titre : options de la fenêtre, réduire, agrandir, fermer, réorganiser.</p>
+<table>
+<tr><th>Fenêtre</th><th>Raccourci</th><th>Contenu</th></tr>
+<tr><td>Playlist</td><td><kbd>F5</kbd></td><td>Arrangement du morceau.</td></tr>
+<tr><td>Channel Rack</td><td><kbd>F6</kbd></td><td>Instruments et séquenceur pas à pas.</td></tr>
+<tr><td>Piano roll</td><td><kbd>F7</kbd></td><td>Notes du canal sélectionné.</td></tr>
+<tr><td>Navigateur</td><td><kbd>F8</kbd></td><td>Liste des instruments, sons importés et projets.</td></tr>
+<tr><td>Mixer</td><td><kbd>F9</kbd></td><td>Table de mixage et effets.</td></tr>
+<tr><td>Automation</td><td><kbd>F10</kbd></td><td>Édition des courbes d'automation.</td></tr>
+<tr><td>Réglages du canal</td><td>clic sur le nom du canal</td><td>Son, moteur de synthèse, enveloppe, filtre, arpégiateur.</td></tr>
+<tr><td>Aide</td><td>menu AIDE</td><td>Rappel des raccourcis.</td></tr>
+</table>
+</section>
+
+<!-- ============================================================ -->
+<section id="rack">
+<h2>4. Channel Rack et séquenceur</h2>
+<p>Chaque ligne est un canal : LED (mute), bouton de volume, bouton de pan, nom, puis la rangée de pas.</p>
+<h3 id="rack-pas">Poser et effacer des pas</h3>
+<table>
+<tr><th>Action</th><th>Résultat</th></tr>
+<tr><td>Clic sur un pas</td><td>Pose une note (glissez pour en poser plusieurs).</td></tr>
+<tr><td>Clic droit sur un pas</td><td>Efface le pas (glissez pour en effacer plusieurs).</td></tr>
+<tr><td><kbd>Maj</kbd> + clic droit</td><td>Pose une <strong>note douce</strong> (vélocité réduite).</td></tr>
+<tr><td>Clic sur le nom</td><td>Sélectionne le canal et ouvre ses réglages.</td></tr>
+<tr><td>Clic gauche sur la LED</td><td>Mute / unmute du canal.</td></tr>
+<tr><td>Clic droit sur la LED</td><td>Solo du canal.</td></tr>
+</table>
+<h3 id="rack-reglages">Réglages du pattern</h3>
+<ul>
+<li><strong>Longueur</strong> : 1, 2, 3 ou 4 mesures (16 à 64 pas).</li>
+<li><strong>Swing</strong> : retarde les pas pairs pour un groove plus « humain ».</li>
+<li><strong>+ Ajouter un canal</strong> : ajoute un instrument (aussi via le menu AJOUTER).</li>
+</ul>
+<h3 id="rack-menu">Menu clic droit du nom de canal</h3>
+<p>Piano roll, fenêtre du canal, renommer (<kbd>F2</kbd>), couleur, insérer, remplacer, cloner (<kbd>Alt</kbd>+<kbd>C</kbd>), supprimer (<kbd>Alt</kbd>+<kbd>Suppr</kbd>), couper / copier / coller les pas, remplir chaque 2 / 4 / 8 pas, décaler les pas, choisir la piste du mixer, mute, solo, monter / descendre (<kbd>Alt</kbd>+<kbd>↑</kbd> / <kbd>Alt</kbd>+<kbd>↓</kbd>).</p>
+<div class="box tip"><b>Astuce</b><em>Remplir chaque 4 pas</em> sur un kick crée instantanément un « four on the floor » ; <em>chaque 2 pas</em> sur un hi-hat donne des croches régulières.</div>
+</section>
+
+<!-- ============================================================ -->
+<section id="instruments">
+<h2>5. Instruments et réglages du canal</h2>
+<p>Les 23 instruments sont entièrement synthétisés : aucun fichier audio n'est nécessaire.</p>
+<table>
+<tr><th>Famille</th><th>Instruments</th></tr>
+<tr><td>Batterie (11)</td><td>Kick, Snare, Clap, Hi-hat, Open hat, Tom, Cowbell, Crash, Rimshot, Shaker, Conga</td></tr>
+<tr><td>Synthés (11)</td><td>Synth Bass, Synth Lead, Synth Pad, Synth Pluck, FM Synth, Super Saw, Orgue, 808 Bass, Guitare pluck, Piano électrique, Cordes</td></tr>
+<tr><td>Sampler (1)</td><td>Joue un son importé (fichier audio glissé dans la page ou enregistrement micro).</td></tr>
+</table>
+<h3 id="moteurs">Les 6 moteurs de synthèse</h3>
+<table>
+<tr><th>Moteur</th><th>Principe</th><th>Paramètres spécifiques</th></tr>
+<tr><td>Soustractive</td><td>Deux oscillateurs mélangés puis filtrés : le son classique des basses et leads.</td><td>Formes d'onde, désaccord du 2ᵉ oscillateur, filtre (cutoff, résonance), enveloppe.</td></tr>
+<tr><td>FM</td><td>Un oscillateur module la fréquence d'un autre : sons métalliques, cloches, pianos électriques.</td><td>Ratio, index de modulation, enveloppe de l'index.</td></tr>
+<tr><td>Super saw</td><td>Plusieurs dents de scie désaccordées et étalées en stéréo : son « trance ».</td><td>Nombre de voix (1 à 9), désaccord, largeur stéréo.</td></tr>
+<tr><td>Additive (orgue)</td><td>Addition d'harmoniques, comme les tirettes d'un orgue.</td><td>Niveaux : fondamentale, octave, quinte, 2ᵉ octave.</td></tr>
+<tr><td>808</td><td>Sinus grave avec descente de hauteur : basses hip-hop / trap.</td><td>Glide, saturation.</td></tr>
+<tr><td>Corde pincée</td><td>Modèle physique de corde (type Karplus-Strong) : guitares, harpes.</td><td>Brillance, tenue.</td></tr>
+</table>
+<h3 id="enveloppe">Volume, hauteur, filtre, enveloppe</h3>
+<p>Chaque canal a un volume, un pan et une hauteur ; les synthés ajoutent un filtre (cutoff, résonance) et une enveloppe <strong>Attack, Decay, Sustain, Release</strong> (montée, déclin, niveau tenu, extinction). Volume, pan, hauteur, cutoff et résonance sont automatisables : clic droit sur le bouton › <em>Créer un clip d'automation</em>.</p>
+<h3 id="arpegiateur">Arpégiateur</h3>
+<p>L'arpégiateur transforme un accord tenu en suite de notes.</p>
+<table>
+<tr><th>Réglage</th><th>Valeurs</th></tr>
+<tr><td>Mode</td><td>Montant, Descendant, Aller-retour, Aléatoire, Accord répété</td></tr>
+<tr><td>Vitesse</td><td>1/32, 1/16, 1/8, 1/4</td></tr>
+<tr><td>Octaves</td><td>1 à 4</td></tr>
+<tr><td>Gate</td><td>Durée de chaque note (court = staccato, long = legato)</td></tr>
+</table>
+<div class="box tip"><b>Exemple</b>Écrivez un accord de Synth Pluck sur 1 mesure dans le piano roll, activez l'arpégiateur en mode <em>Montant</em>, vitesse 1/16, 2 octaves : vous obtenez un arpège typique de la musique électronique.</div>
+</section>
+
+<!-- ============================================================ -->
+<section id="pianoroll">
+<h2>6. Piano roll</h2>
+<p>Le piano roll édite les notes du canal sélectionné, de <strong>C1 à C7</strong>. Il est synchronisé avec le séquenceur : les notes apparaissent aussi dans le Channel Rack.</p>
+<h3 id="pr-souris">Souris</h3>
+<table>
+<tr><th>Action</th><th>Résultat</th></tr>
+<tr><td>Clic sur une case vide</td><td>Crée une note de la longueur choisie (ou un accord, si un accord est sélectionné).</td></tr>
+<tr><td>Glisser une note</td><td>La déplace (hauteur et position).</td></tr>
+<tr><td>Glisser le bord droit</td><td>Change la longueur.</td></tr>
+<tr><td>Clic droit</td><td>Supprime la note.</td></tr>
+<tr><td>Bande de vélocité (en bas)</td><td>Cliquez ou glissez pour régler la force de chaque note.</td></tr>
+</table>
+<h3 id="pr-barre">Barre d'outils</h3>
+<ul>
+<li><strong>Longueur</strong> des nouvelles notes : 1/16, 1/8, 1/4, 1/2, 1 mesure.</li>
+<li><strong>Accord</strong> : Majeur, Mineur, 7, Maj7, Min7, Sus4, Quinte : un clic pose l'accord entier.</li>
+<li><strong>Transposer</strong> : ±1 demi-ton, ±12 (une octave).</li>
+<li><strong>Humaniser</strong> : petites variations de vélocité et de position.</li>
+<li><strong>Vider</strong> : efface toutes les notes du canal dans ce pattern.</li>
+</ul>
+<h3 id="gammes">Gammes</h3>
+<p>Choisissez une tonique et une gamme : les touches de la gamme sont surlignées pour écrire sans fausse note. Gammes disponibles : Majeur, Mineur, Mineur harmonique, Dorien, Phrygien, Mixolydien, Pentatonique majeure, Pentatonique mineure, Blues.</p>
+<h3 id="pr-outils">Outils 🛠</h3>
+<table>
+<tr><th>Outil</th><th>Effet</th></tr>
+<tr><td>Générer 🎲</td><td>Crée une mélodie (synthés) ou un rythme (batterie) dans la gamme choisie.</td></tr>
+<tr><td>Legato</td><td>Allonge chaque note jusqu'à la suivante.</td></tr>
+<tr><td>Rétrograde</td><td>Inverse l'ordre des notes dans le temps.</td></tr>
+<tr><td>Miroir</td><td>Inverse les intervalles (ce qui montait descend).</td></tr>
+<tr><td>Ralentir ×2 / Accélérer ÷2</td><td>Double ou divise par deux positions et durées.</td></tr>
+<tr><td>Accrocher à la gamme</td><td>Déplace chaque note hors gamme vers la note de la gamme la plus proche.</td></tr>
+<tr><td>Octave +1 / −1</td><td>Transpose tout d'une octave.</td></tr>
+<tr><td>Vélocités aléatoires</td><td>Donne une vélocité différente à chaque note.</td></tr>
+<tr><td>Supprimer doublons</td><td>Retire les notes superposées identiques.</td></tr>
+<tr><td>Copier / Coller</td><td>Copie les notes du canal pour les coller dans un autre canal ou pattern.</td></tr>
+</table>
+</section>
+
+<!-- ============================================================ -->
+<section id="playlist">
+<h2>7. Playlist et patterns</h2>
+<p>La playlist compte <strong>32 pistes</strong> et <strong>160 mesures</strong>. Elle n'est jouée qu'en mode <strong>SONG</strong>.</p>
+<h3 id="pl-souris">Souris</h3>
+<table>
+<tr><th>Action</th><th>Résultat</th></tr>
+<tr><td>Clic dans une piste</td><td>Pose le pattern choisi dans la liste « Pattern à poser ».</td></tr>
+<tr><td>Glisser un clip</td><td>Le déplace.</td></tr>
+<tr><td>Clic sur un clip</td><td>Sélectionne son pattern pour l'éditer.</td></tr>
+<tr><td>Clic droit (glisser)</td><td>Supprime un ou plusieurs clips.</td></tr>
+<tr><td>Clic sur la règle</td><td>Place la tête de lecture.</td></tr>
+<tr><td>Clic droit sur l'en-tête de piste</td><td>Renommer, couleur, nom auto, insérer / supprimer une piste, monter / descendre, mute, solo, vider.</td></tr>
+</table>
+<h3 id="patterns">Gérer les patterns</h3>
+<p>Le menu <strong>PATTERNS</strong> et le clic droit sur le sélecteur de pattern proposent : liste des patterns, <strong>premier pattern vide</strong> (<kbd>F4</kbd> ; en crée un s'il n'y en a pas), nouveau, cloner, renommer, diviser par canal, vider, supprimer, <strong>doubler la longueur</strong> (jusqu'à 4 mesures) et <strong>remplir une piste libre</strong> (pose le pattern sur 8 mesures). <kbd>Pavé +</kbd> / <kbd>Pavé −</kbd> passent au pattern suivant / précédent.</p>
+<div class="box"><b>Méthode conseillée</b>Un pattern par élément (batterie, basse, mélodie…), une piste de playlist par pattern. L'arrangement devient très lisible et chaque élément s'active ou se coupe indépendamment.</div>
+</section>
+
+<!-- ============================================================ -->
+<section id="mixer">
+<h2>8. Mixer et effets</h2>
+<p>Le mixer comprend le <strong>Master</strong> et <strong>12 inserts</strong>. Chaque insert possède un fader de volume, un pan, mute, solo, un vumètre, <strong>10 emplacements d'effets</strong> et <strong>2 envois (sends)</strong> vers un insert de numéro supérieur.</p>
+<h3 id="routage">Routage</h3>
+<ul>
+<li>Chaque canal est envoyé vers un insert (clic droit sur le nom du canal › piste du mixer).</li>
+<li><kbd>Ctrl</kbd>+<kbd>L</kbd> lie le canal sélectionné à l'insert sélectionné.</li>
+<li>Les sends servent aux effets partagés : mettez une Reverb Hall sur l'insert 12 et envoyez-y plusieurs inserts.</li>
+</ul>
+<h3 id="effets">Les 27 effets</h3>
+<table>
+<tr><th>Catégorie</th><th>Effets</th></tr>
+<tr><td>Égalisation / filtres</td><td>Filtre passe-bas, passe-haut, passe-bande ; EQ 3 bandes ; EQ paramétrique 7 bandes ; Bass Boost ; Exciteur</td></tr>
+<tr><td>Dynamique</td><td>Compresseur, Limiteur, Soft Clipper, Maximus (multibande), Sidechain / Pump, Trance Gate</td></tr>
+<tr><td>Espace</td><td>Delay, Delay ping-pong, Reverb, Reverb Hall, Largeur stéréo</td></tr>
+<tr><td>Modulation</td><td>Chorus, Phaser, Flanger, Trémolo, Auto-pan, Auto-wah, Ring Modulator</td></tr>
+<tr><td>Couleur / dégradation</td><td>Distorsion, Bitcrusher, Lo-Fi</td></tr>
+<tr><td>Outil</td><td>Utilitaire (gain, inversion, mono…)</td></tr>
+</table>
+<p>Clic droit sur un slot : sélectionner un effet, monter / descendre, copier, coller, supprimer.</p>
+<h3 id="chaines">Chaînes d'effets prêtes à l'emploi</h3>
+<table>
+<tr><th>Chaîne</th><th>Usage</th></tr>
+<tr><td>Mastering doux</td><td>Finition légère du morceau sur le Master.</td></tr>
+<tr><td>Master fort (club)</td><td>Son puissant et compressé pour la musique de club.</td></tr>
+<tr><td>Master transparent</td><td>Limiteur de sécurité sans coloration.</td></tr>
+<tr><td>Lo-fi / chill</td><td>Son vieilli, chaud et feutré.</td></tr>
+<tr><td>Voix</td><td>Nettoyage et présence d'un enregistrement micro.</td></tr>
+<tr><td>Batterie punchy</td><td>Batterie plus percutante.</td></tr>
+<tr><td>Sidechain EDM (basse / pad)</td><td>Effet de « pompage » calé sur le tempo.</td></tr>
+<tr><td>Ambiance (grosse réverbe)</td><td>Grand espace pour pads et nappes.</td></tr>
+<tr><td>Trance gate</td><td>Découpe rythmique du son.</td></tr>
+</table>
+<p>Elles s'appliquent par clic droit sur une tranche du mixer › <em>Chaînes d'effets</em>. Le même menu permet de renommer, colorer, lier un canal, voir les canaux routés, ajouter un effet, copier / coller / effacer la chaîne, régler mute / volume / pan, enregistrer ou ouvrir l'état de la tranche, et réinitialiser.</p>
+<div class="box warn"><b>Attention au volume</b>Si le vumètre du Master atteint le rouge, baissez les inserts plutôt que le Master, ou ajoutez un Limiteur en dernier slot du Master.</div>
+</section>
+
+<!-- ============================================================ -->
+<section id="knobs">
+<h2>9. Boutons rotatifs et automation</h2>
+<h3 id="knobs-souris">Manipuler un bouton ou un fader</h3>
+<table>
+<tr><th>Action</th><th>Résultat</th></tr>
+<tr><td>Glisser verticalement</td><td>Change la valeur.</td></tr>
+<tr><td><kbd>Maj</kbd> + glisser</td><td>Réglage fin.</td></tr>
+<tr><td>Molette</td><td>Pas à pas.</td></tr>
+<tr><td>Double-clic</td><td>Valeur par défaut.</td></tr>
+<tr><td>Clic droit</td><td>Modifier les événements, initialiser le morceau avec cette position, créer un clip d'automation, saisir une valeur, réinitialiser, min / max, copier / coller la valeur.</td></tr>
+</table>
+<h3 id="automation">Clips d'automation</h3>
+<p>Un clip d'automation fait varier un paramètre au fil du morceau (ex. : ouverture progressive d'un filtre). Il est <strong>joué en mode SONG</strong> uniquement.</p>
+<ul>
+<li><strong>Cibles possibles</strong> : volume, pan, hauteur, cutoff et résonance des canaux ; volume et pan des inserts ; tous les paramètres des effets.</li>
+<li><strong>Création</strong> : clic droit sur le bouton › <em>Créer un clip d'automation</em>, ou depuis la fenêtre Automation (<kbd>F10</kbd>).</li>
+<li><strong>Édition</strong> : dans la fenêtre Automation, cliquez pour ajouter des points et glissez-les pour dessiner la courbe.</li>
+</ul>
+</section>
+
+<!-- ============================================================ -->
+<section id="jouer">
+<h2>10. Jouer et enregistrer</h2>
+<h3 id="clavier-ordi">Clavier de l'ordinateur</h3>
+<p>Les touches sont lues selon leur <strong>position physique</strong> (AZERTY et QWERTY fonctionnent pareil) : la rangée du bas à partir de <kbd>W</kbd> et la rangée du haut à partir de <kbd>A</kbd> jouent deux octaves. <kbd>←</kbd> / <kbd>→</kbd> changent d'octave.</p>
+<h3 id="midi">Clavier MIDI</h3>
+<p>Dans Edge ou Chrome, branchez le clavier puis <em>OPTIONS › Activer un clavier MIDI</em>. Les notes jouent le canal sélectionné ; le contrôleur <strong>CC7</strong> règle le volume du canal. Avec ● actif pendant la lecture, ce que vous jouez est enregistré dans le pattern.</p>
+<h3 id="micro">Micro 🎙</h3>
+<p>Le bouton 🎙 enregistre le micro ; à l'arrêt, un nouveau canal <strong>Sampler</strong> contenant l'enregistrement est créé. Autorisez l'accès au micro lorsque le navigateur le demande.</p>
+<h3 id="sortie">Enregistrer la sortie ⏺</h3>
+<p>Le bouton ⏺ enregistre tout ce que vous entendez en temps réel dans un fichier <code>.webm</code> ou <code>.ogg</code> (format selon le navigateur) — pratique pour capturer une improvisation.</p>
+</section>
+
+<!-- ============================================================ -->
+<section id="import-export">
+<h2>11. Import et export</h2>
+<table>
+<tr><th>Fonction</th><th>Accès</th><th>Détails</th></tr>
+<tr><td>Export WAV</td><td><kbd>Ctrl</kbd>+<kbd>R</kbd></td><td>Pattern (mode PAT) ou morceau entier (mode SONG), calculé plus vite que le temps réel.</td></tr>
+<tr><td>Pistes séparées (stems)</td><td>FICHIER</td><td>Un fichier WAV par insert du mixer, pour finir le mixage dans un autre logiciel.</td></tr>
+<tr><td>Export MIDI</td><td><kbd>Ctrl</kbd>+<kbd>M</kbd></td><td>Notes de tous les canaux en fichier <code>.mid</code>.</td></tr>
+<tr><td>Import MIDI</td><td>FICHIER, ou glisser un <code>.mid</code></td><td>Crée canaux et notes.</td></tr>
+<tr><td>Fichiers audio</td><td>Glisser dans la page</td><td>Chaque fichier devient un canal Sampler.</td></tr>
+<tr><td>Projet FL Studio</td><td>FICHIER › Importer un projet FL Studio</td><td>Importe tempo, canaux, patterns, notes et playlist.</td></tr>
+</table>
+<div class="box warn"><b>Limites de l'import .flp</b>Les plugins tiers et leurs réglages, l'audio des samples, l'automation et les effets du mixer ne sont pas importés. Le type d'instrument est deviné d'après le nom du canal.</div>
+</section>
+
+<!-- ============================================================ -->
+<section id="donnees">
+<h2>12. Données et sauvegarde</h2>
+<p>Vos données sont stockées dans un dossier séparé du programme :</p>
+<pre><code>Documents\WebStudio\
+  ├─ projet-en-cours.json   sauvegarde automatique à chaque modification
+  ├─ samples.json    sons importés (micro, fichiers audio)
+  ├─ reglages.json          thème, date de création, dernier lancement
+  ├─ Projets\ projets enregistrés (Ctrl+S)
+  └─ LISEZ-MOI.txt</code></pre>
+<h3 id="auto-save">Sauvegarde automatique</h3>
+<p>Chaque modification est écrite dans <code>projet-en-cours.json</code> moins d'une seconde après. <kbd>Ctrl</kbd>+<kbd>Z</kbd> / <kbd>Ctrl</kbd>+<kbd>Y</kbd> annulent et rétablissent jusqu'à 100 actions.</p>
+<h3 id="pastille">La pastille 💾</h3>
+<table>
+<tr><th>Affichage</th><th>Signification</th></tr>
+<tr><td><code>WebStudio ✓</code></td><td>Tout est enregistré dans le dossier.</td></tr>
+<tr><td><code>enregistrement…</code></td><td>Écriture en cours.</td></tr>
+<tr><td><code>erreur !</code></td><td>L'écriture a échoué (dossier déplacé, autorisation retirée…). Cliquez sur la pastille.</td></tr>
+<tr><td><code>Navigateur seulement</code></td><td>Aucun dossier connecté : les données sont seulement dans le navigateur.</td></tr>
+</table>
+<p>Un clic sur la pastille permet d'enregistrer immédiatement, d'ouvrir un projet, de changer ou déconnecter le dossier, et de revoir le message d'accueil.</p>
+<h3 id="projets">Projets</h3>
+<ul>
+<li><kbd>Ctrl</kbd>+<kbd>S</kbd> enregistre le projet (avec ses sons) dans <code>Projets\</code>.</li>
+<li><kbd>Ctrl</kbd>+<kbd>O</kbd> ou <em>FICHIER › Ouvrir…</em> liste les projets du dossier.</li>
+<li><em>FICHIER › Dossier de données…</em> et <em>FICHIER › Message d'accueil</em> donnent accès aux réglages du dossier.</li>
+</ul>
+<h3 id="changer-pc">Changer de PC</h3>
+<p>Copiez le dossier <code>Documents\WebStudio</code> (clé USB, cloud…). Sur l'autre PC, choisissez ce dossier au lancement : tout revient.</p>
+<div class="box"><b>Pourquoi l'autorisation est redemandée ?</b>Par sécurité, le navigateur ne garde pas l'accès à un dossier du PC d'une session à l'autre. Un clic sur « Reprendre mon travail » suffit à le rétablir.</div>
+</section>
+
+<!-- ============================================================ -->
+<section id="raccourcis">
+<h2>13. Raccourcis clavier</h2>
+<table>
+<tr><th>Raccourci</th><th>Action</th></tr>
+<tr><td><kbd>Espace</kbd></td><td>Lecture / stop</td></tr>
+<tr><td><kbd>L</kbd></td><td>Mode Pattern / Song</td></tr>
+<tr><td><kbd>F5</kbd> <kbd>F6</kbd> <kbd>F7</kbd> <kbd>F8</kbd> <kbd>F9</kbd> <kbd>F10</kbd></td><td>Playlist, Channel Rack, Piano roll, Navigateur, Mixer, Automation</td></tr>
+<tr><td><kbd>F4</kbd></td><td>Premier pattern vide (en crée un s'il n'y en a pas)</td></tr>
+<tr><td><kbd>Pavé +</kbd> / <kbd>Pavé −</kbd></td><td>Pattern suivant / précédent</td></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>Z</kbd> / <kbd>Ctrl</kbd>+<kbd>Y</kbd></td><td>Annuler / rétablir (100 niveaux)</td></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>S</kbd></td><td>Enregistrer</td></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>O</kbd></td><td>Ouvrir un projet</td></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>R</kbd></td><td>Exporter en WAV</td></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>M</kbd></td><td>Exporter en MIDI</td></tr>
+<tr><td><kbd>F2</kbd></td><td>Renommer le canal sélectionné</td></tr>
+<tr><td><kbd>Alt</kbd>+<kbd>C</kbd></td><td>Cloner le canal</td></tr>
+<tr><td><kbd>Alt</kbd>+<kbd>Suppr</kbd></td><td>Supprimer le canal</td></tr>
+<tr><td><kbd>Alt</kbd>+<kbd>↑</kbd> / <kbd>Alt</kbd>+<kbd>↓</kbd></td><td>Monter / descendre le canal</td></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>L</kbd></td><td>Lier le canal sélectionné à l'insert sélectionné</td></tr>
+<tr><td><kbd>←</kbd> / <kbd>→</kbd></td><td>Octave du clavier de l'ordinateur</td></tr>
+<tr><td>Touches lettres</td><td>Jouer des notes (voir <a href="#clavier-ordi">Clavier de l'ordinateur</a>)</td></tr>
+</table>
+</section>
+
+<!-- ============================================================ -->
+<section id="clics-droits">
+<h2>14. Clics droits</h2>
+<table>
+<tr><th>Zone</th><th>Contenu du menu</th></tr>
+<tr><td>Nom d'un canal</td><td>Piano roll, fenêtre du canal, renommer, couleur, insérer, remplacer, cloner, supprimer, couper / copier / coller les pas, remplir chaque 2 / 4 / 8 pas, décaler, piste du mixer, mute, solo, monter / descendre</td></tr>
+<tr><td>Pas du séquenceur</td><td>Efface le pas (glisser pour en effacer plusieurs) ; <kbd>Maj</kbd> + clic droit : note douce</td></tr>
+<tr><td>LED d'un canal</td><td>Solo</td></tr>
+<tr><td>Bouton rotatif / fader</td><td>Modifier les événements, initialiser le morceau avec cette position, créer un clip d'automation, saisir une valeur, réinitialiser, min / max, copier / coller la valeur</td></tr>
+<tr><td>Tranche du mixer</td><td>Renommer, couleur, lier le canal, canaux routés, chaînes d'effets, ajouter un effet, copier / coller / effacer la chaîne, mute, volume, pan, fichier, réinitialiser</td></tr>
+<tr><td>Slot d'effet</td><td>Sélectionner un effet, monter / descendre, copier, coller, supprimer</td></tr>
+<tr><td>En-tête de piste</td><td>Renommer, couleur, nom auto, insérer / supprimer une piste, monter / descendre, mute, solo, vider</td></tr>
+<tr><td>Clip de la playlist</td><td>Supprime le clip (glisser pour en supprimer plusieurs)</td></tr>
+<tr><td>Note du piano roll</td><td>Supprime la note</td></tr>
+<tr><td>Sélecteur de pattern</td><td>Liste, premier vide, nouveau, cloner, renommer, diviser par canal, vider, supprimer</td></tr>
+<tr><td>Barre de titre d'une fenêtre</td><td>Options de la fenêtre, réduire, agrandir, fermer, réorganiser</td></tr>
+</table>
+</section>
+
+<!-- ============================================================ -->
+<section id="options">
+<h2>15. Thèmes et options</h2>
+<ul>
+<li><strong>Thèmes</strong> : Orange (par défaut), Bleu, Vert, Violet, Clair. Le choix est mémorisé dans <code>reglages.json</code>.</li>
+<li><strong>Métronome</strong> ♩ et <strong>Tap tempo</strong> dans la barre du haut.</li>
+<li><strong>Réorganisation des fenêtres</strong> : bouton <em>Auto</em> ou menu VUE.</li>
+<li><strong>Clavier MIDI</strong> : menu OPTIONS.</li>
+</ul>
+</section>
+
+<!-- ============================================================ -->
+<section id="navigateurs">
+<h2>16. Navigateurs compatibles</h2>
+<table>
+<tr><th>Navigateur</th><th>Son, édition</th><th>Dossier Documents\WebStudio</th><th>Clavier MIDI</th></tr>
+<tr><td>Microsoft Edge <span class="badge">recommandé</span></td><td>✅</td><td>✅</td><td>✅</td></tr>
+<tr><td>Google Chrome</td><td>✅</td><td>✅</td><td>✅</td></tr>
+<tr><td>Firefox</td><td>✅</td><td>❌ (données dans le navigateur)</td><td>❌</td></tr>
+<tr><td>Safari</td><td>non testé</td><td>❌</td><td>❌</td></tr>
+</table>
+</section>
+
+<!-- ============================================================ -->
+<section id="faq">
+<h2>17. FAQ et dépannage</h2>
+<details><summary>Je n'entends aucun son.</summary><p>Cliquez une fois dans la page : le navigateur bloque le son tant qu'il n'y a pas eu d'interaction. Vérifiez ensuite le bouton Master, les mutes (LED des canaux, mixer) et le volume de Windows.</p></details>
+<details><summary>La pastille affiche « Navigateur seulement ».</summary><p>Aucun dossier n'est connecté. Cliquez sur la pastille › <em>Choisir un dossier sur le PC…</em> et sélectionnez <code>Documents</code>.</p></details>
+<details><summary>Le dossier n'est plus reconnu.</summary><p>Cliquez sur 💾 › <em>Changer de dossier…</em> et choisissez <code>Documents\WebStudio</code> : le projet en cours est repris.</p></details>
+<details><summary>Après une mise à jour, rien ne change.</summary><p>Appuyez sur <kbd>Ctrl</kbd>+<kbd>F5</kbd> pour vider le cache du navigateur.</p></details>
+<details><summary>Le micro ne fonctionne pas.</summary><p>Autorisez le micro dans la barre d'adresse. Si la page est ouverte en <code>file://</code> et que le micro reste bloqué, lancez un petit serveur local (voir <a href="#devs">Pour les développeurs</a>).</p></details>
+<details><summary>Le clavier MIDI n'est pas détecté.</summary><p>Utilisez Edge ou Chrome, branchez le clavier <em>avant</em> d'activer le MIDI, puis <em>OPTIONS › Activer un clavier MIDI</em>.</p></details>
+<details><summary>Mon projet .flp est incomplet.</summary><p>C'est normal : seuls le tempo, les canaux, les patterns, les notes et la playlist sont importés.</p></details>
+<details><summary>Le son grésille ou saccade.</summary><p>Retirez des effets lourds (Reverb Hall, Maximus) sur les inserts inutilisés, fermez les autres onglets et baissez les volumes si le Master sature.</p></details>
+<details><summary>J'ai fait une erreur.</summary><p><kbd>Ctrl</kbd>+<kbd>Z</kbd> annule (jusqu'à 100 actions). Les projets enregistrés dans <code>Projets\</code> ne sont jamais écrasés par la sauvegarde automatique.</p></details>
+</section>
+
+<!-- ============================================================ -->
+<section id="devs">
+<h2>18. Pour les développeurs</h2>
+<ul>
+<li><strong>Aucune dépendance ni compilation</strong> : HTML, CSS et JavaScript « vanilla » + Web Audio API.</li>
+<li><strong>État global</strong> : l'objet <code>S</code> contient tout le projet (canaux, patterns, clips, inserts, automations, gamme, tempo…) ; <code>SAMPLES</code> contient les sons importés (data URL).</li>
+<li><strong>Cycle de mise à jour</strong> : modifier <code>S</code> → <code>rebuild()</code> (graphe audio) si nécessaire → <code>render…()</code> (interface) → <code>commit()</code> (historique + sauvegarde).</li>
+<li><strong>Extension par surcharge</strong> : chaque module remplace des fonctions globales en conservant l'ancienne version.</li>
+</ul>
+<pre><code>const _old = renderMixer;
+renderMixer = function () { _old(); /* ajouts du module */ };</code></pre>
+<h3 id="modules">Modules (ordre de chargement)</h3>
+<table>
+<tr><th>Fichier</th><th>Rôle</th></tr>
+<tr><td><code>index.html</code></td><td>Interface et moteur audio de base</td></tr>
+<tr><td><code>js/ui.js</code></td><td>Utilitaires d'interface partagés</td></tr>
+<tr><td><code>js/instruments.js</code></td><td>Instruments, moteurs de synthèse, arpégiateur</td></tr>
+<tr><td><code>js/effects.js</code></td><td>Effets supplémentaires et envois du mixer</td></tr>
+<tr><td><code>js/sequencer.js</code></td><td>Séquenceur étendu (arpégiateur, automation)</td></tr>
+<tr><td><code>js/automation.js</code></td><td>Clips et fenêtre Automation</td></tr>
+<tr><td><code>js/midi-rec.js</code></td><td>Clavier MIDI, enregistrement micro et sortie</td></tr>
+<tr><td><code>js/export.js</code></td><td>Stems, export / import MIDI</td></tr>
+<tr><td><code>js/flp.js</code></td><td>Import .flp</td></tr>
+<tr><td><code>js/mixer-plus.js</code></td><td>Effets avancés, chaînes, menus du mixer</td></tr>
+<tr><td><code>js/fl-ui.js</code></td><td>Interface et clics droits façon FL, raccourcis</td></tr>
+<tr><td><code>js/tools.js</code></td><td>Gammes, outils du piano roll, thèmes, menus</td></tr>
+<tr><td><code>js/storage.js</code></td><td>Accueil et enregistrement dans Documents\WebStudio</td></tr>
+</table>
+<h3 id="ajouter-effet">Ajouter un effet</h3>
+<p>Ajoutez une entrée dans <code>FX</code> (nom, valeurs par défaut, paramètres, fonction de construction) : l'effet apparaît automatiquement dans le mixer, les menus et l'automation.</p>
+<h3 id="cache">Cache et serveur local</h3>
+<p>Les fichiers sont chargés avec <code>?v=7</code> : augmentez ce numéro dans <code>index.html</code> après une modification. Serveur local facultatif : <code>python -m http.server 8000</code> dans le dossier <code>webstudio</code>, puis <code>http://localhost:8000</code>. Changer d'adresse (<code>file://</code> → <code>http://</code>) oblige à rechoisir le dossier de données ; le projet est alors repris.</p>
+<h3 id="format">Format d'un projet</h3>
+<p>Fichier JSON contenant <code>bpm</code>, <code>channels</code>, <code>patterns</code>, <code>clips</code>, <code>tracks</code>, <code>inserts</code>, <code>autos</code>, <code>scale</code>… Les projets du dossier <code>Projets\</code> incluent aussi les sons (<code>samples</code>).</p>
+</section>
+
+<!-- ============================================================ -->
+<section id="limites">
+<h2>19. Limites connues et mentions</h2>
+<ul>
+<li>Pas de plugins VST ni de clips audio dans la playlist (les sons passent par des canaux Sampler).</li>
+<li>Autorisation du dossier redemandée à chaque lancement (sécurité du navigateur).</li>
+<li>Firefox et Safari : pas d'écriture dans un dossier du PC ni de MIDI.</li>
+<li>Gros samples sans dossier connecté : la mémoire du navigateur peut être insuffisante.</li>
+</ul>
+<p>WebStudio est un projet indépendant, <strong>inspiré</strong> de l'ergonomie de FL Studio. Il n'est ni affilié à Image-Line ni approuvé par cette société. « FL Studio » est une marque d'Image-Line Software.</p>
+</section>
+
+<footer>WebStudio — documentation · <a href="index.html">Ouvrir l'application</a> · <a href="README.md">README</a></footer>
+</main>
+<button id="top" type="button" title="Haut de page">↑</button>
+
+<script>
+(function(){
+  var toc=document.getElementById('toc'),q=document.getElementById('q'),info=document.getElementById('qinfo');
+  var secs=[].slice.call(document.querySelectorAll('main section'));
+  var links=[];
+  secs.forEach(function(s){
+    var h=s.querySelector('h2');
+    var a=document.createElement('a');a.href='#'+s.id;a.textContent=h.textContent;a.dataset.sec=s.id;toc.appendChild(a);links.push(a);
+    [].forEach.call(s.querySelectorAll('h3[id]'),function(h3){
+      var b=document.createElement('a');b.href='#'+h3.id;b.className='sub';b.textContent=h3.textContent;b.dataset.sec=s.id;toc.appendChild(b);links.push(b);
+    });
+  });
+  // surlignage
+  function clearMarks(){[].forEach.call(document.querySelectorAll('main mark'),function(m){var t=document.createTextNode(m.textContent);m.parentNode.replaceChild(t,m);t.parentNode.normalize();});}
+  function norm(s){return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');}
+  function markIn(node,term){
+    var w=document.createTreeWalker(node,NodeFilter.SHOW_TEXT,null),list=[],n;
+    while(n=w.nextNode())list.push(n);
+    list.forEach(function(t){
+      var txt=t.nodeValue,i=norm(txt).indexOf(term);if(i<0)return;
+      var r=document.createRange();r.setStart(t,i);r.setEnd(t,i+term.length);
+      var m=document.createElement('mark');r.surroundContents(m);
+    });
+  }
+  var timer;
+  q.addEventListener('input',function(){clearTimeout(timer);timer=setTimeout(run,150);});
+  q.addEventListener('keydown',function(e){if(e.key==='Escape'){q.value='';run();}if(e.key==='Enter'){var m=document.querySelector('main mark');if(m)m.scrollIntoView({block:'center'});}});
+  function run(){
+    clearMarks();
+    var term=norm(q.value.trim()),count=0;
+    secs.forEach(function(s){
+      var ok=!term||norm(s.textContent).indexOf(term)>=0;
+      s.classList.toggle('hide',!ok);if(ok&&term){count++;markIn(s,term);}
+      // ouvrir les FAQ qui contiennent le terme
+      [].forEach.call(s.querySelectorAll('details'),function(d){d.open=!!term&&norm(d.textContent).indexOf(term)>=0;});
+    });
+    links.forEach(function(a){a.classList.toggle('hide',document.getElementById(a.dataset.sec).classList.contains('hide'));});
+    info.textContent=term?(count?count+' section'+(count>1?'s':'')+' trouvée'+(count>1?'s':'')+' — Entrée pour aller au 1er résultat':'Aucun résultat'):'';
+  }
+  // section active dans le sommaire
+  var top=document.getElementById('top');
+  function spy(){
+    var y=window.scrollY+80,cur=null;
+    links.forEach(function(a){var el=document.getElementById(a.getAttribute('href').slice(1));if(el&&el.offsetParent!==null&&el.getBoundingClientRect().top+window.scrollY<=y)cur=a;});
+    links.forEach(function(a){a.classList.toggle('on',a===cur);});
+    top.style.display=window.scrollY>600?'block':'none';
+  }
+  window.addEventListener('scroll',spy,{passive:true});spy();
+  top.onclick=function(){window.scrollTo(0,0);};
+  document.getElementById('menuBtn').onclick=function(){document.body.classList.toggle('nav');};
+  toc.addEventListener('click',function(){document.body.classList.remove('nav');});
+  document.addEventListener('keydown',function(e){if(e.key==='/'&&document.activeElement!==q){e.preventDefault();q.focus();}});
+  // impression : tout afficher, FAQ ouvertes
+  window.addEventListener('beforeprint',function(){[].forEach.call(document.querySelectorAll('details'),function(d){d.open=true;});});
+  document.documentElement.setAttribute('data-ready',secs.length+'/'+links.length);
+})();
+</script>
+</body>
+</html>

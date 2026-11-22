@@ -1,0 +1,41 @@
+/* ===== WebStudio – styles des modules ===== */
+#auScroll{position:absolute;inset:0;overflow:auto}
+#auInner{position:relative;min-height:100%}
+.aurow{display:flex;height:72px;border-bottom:1px solid #23272a}
+.auth{width:110px;flex:none;display:flex;align-items:center;gap:4px;padding:0 4px;background:#3d444a;position:sticky;left:0;z-index:2;font-size:11px;overflow:hidden;box-sizing:border-box;border-right:1px solid #23272a}
+.aunm{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.audel{cursor:pointer;color:var(--dim)}
+.audel:hover{color:#ff6b6b}
+.aucv{display:block;cursor:crosshair;flex:none}
+.au-empty{padding:12px}
+#auHead{position:absolute;top:0;bottom:0;width:2px;background:var(--grn);pointer-events:none;display:none;z-index:3}
+.autsel{max-width:280px}
+.prr.insc{background-image:linear-gradient(rgba(155,225,75,.10),rgba(155,225,75,.10))}
+.prr.scr{background-image:linear-gradient(rgba(255,155,47,.18),rgba(255,155,47,.18))}
+#w-pr .wt select{max-width:130px}
+.tbtn.rec{background:#c0392b!important;color:#fff;animation:wsblink 1s infinite}
+@keyframes wsblink{50%{opacity:.55}}
+.helpx{margin-top:12px}
+.helpx h3{color:var(--acc);font-size:12px;margin:8px 0 4px}
+.helpx td{padding:1px 10px 1px 0;vertical-align:top}
+
+/* ----- menus clic droit, dialogues, barre FX (mixer-plus.js) ----- */
+.ctxm{position:fixed;min-width:190px;max-height:80vh;overflow-y:auto;background:#2b3136;border:1px solid #111417;box-shadow:0 6px 18px rgba(0,0,0,.55);padding:3px 0;font-size:12px;color:#dfe5e8;user-select:none}
+.ctxi{display:flex;align-items:center;padding:3px 10px 3px 2px;cursor:default;white-space:nowrap}
+.ctxi:hover{background:var(--acc);color:#111}
+.ctxi.dis{opacity:.4;pointer-events:none}
+.ctxck{width:18px;text-align:center;flex:none}
+.ctxl{flex:1}
+.ctxk{margin-left:18px;color:var(--dim)}
+.ctxi:hover .ctxk{color:#111}
+.ctxsep{height:1px;background:#454d54;margin:3px 6px}
+.ctxhead{padding:3px 10px;color:var(--acc);font-weight:bold;border-bottom:1px solid #454d54;margin-bottom:3px;white-space:nowrap;max-width:320px;overflow:hidden;text-overflow:ellipsis}
+.wsdlg-bg{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:200000;display:flex;align-items:center;justify-content:center}
+.wsdlg{background:#2f363b;border:1px solid #111417;padding:14px 16px;min-width:300px;max-width:440px;box-shadow:0 10px 30px rgba(0,0,0,.6);color:#dfe5e8;font-size:12px}
+.wsdlg-t{color:var(--acc);font-weight:bold;margin-bottom:6px}
+.wsdlg-p{margin-bottom:6px}
+.wsdlg input{width:100%;box-sizing:border-box;margin:6px 0}
+.wsdlg .btns{display:flex;justify-content:flex-end;gap:6px;margin-top:8px}
+.fxtools{display:flex;gap:4px;margin:4px 0 6px;flex-wrap:wrap}
+.fxbtn{background:#3d444a;color:#dfe5e8;border:1px solid #23272a;border-radius:3px;padding:3px 8px;font-size:11px;cursor:pointer}
+.fxbtn:hover{background:var(--acc);color:#111}

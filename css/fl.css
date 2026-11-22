@@ -1,0 +1,107 @@
+/* ===== WebStudio – thème « FL Studio » (couleurs, barres, fenêtres, menus clic droit) ===== */
+:root{--acc:#ff9b2f;--grn:#a6e24a;--txt:#cfd6db;--dim:#7f8a92;--fl-bg:#23292d;--fl-win:#3d454c;--fl-win2:#353c42;--fl-tb:#2a3035;--fl-hi:#5d6c77}
+body{background:#2b3236;font:11px "Segoe UI",Tahoma,Arial,sans-serif}
+select{background:#262c30;border-color:#171b1e;color:#c9d1d6;border-radius:2px}
+/* ---- barre du haut ---- */
+#top{background:linear-gradient(#485259,#353d43 55%,#2e353a);border-bottom:1px solid #15191b;box-shadow:inset 0 1px 0 #5c666e;height:52px;gap:6px}
+.menu{font-size:10.5px;letter-spacing:.3px;color:#bfc8ce;padding:2px 6px}
+.menu:hover,.menu.open{background:#59646c;color:#fff}
+.dd{background:#363e44;border:1px solid #14181a;box-shadow:2px 4px 10px #000a;border-radius:0}
+.mi{padding:3px 22px 3px 24px}.mi:hover{background:var(--fl-hi);color:#fff}
+#hint{background:#1c2124;color:#c4d8a6;border:1px solid #121517;border-radius:1px;font-size:10.5px}
+.mode{border-radius:1px;background:#20262a;color:#6f7a82;border:1px solid #14181a;padding:0 6px;letter-spacing:.5px}
+.mode.on{background:linear-gradient(#ffb04d,#f08a1c);color:#1a1205}
+.tbtn{height:28px;min-width:28px;border-radius:2px;background:linear-gradient(#56606a,#3c444b);border:1px solid #171b1e;box-shadow:inset 0 1px 0 #6a757e;color:#c6ced4}
+.tbtn:hover{border-color:#171b1e;background:linear-gradient(#64707a,#465058);color:#fff}
+#bPlay{color:#9fe06a}#bPlay.on{background:linear-gradient(#5e7a3a,#3d5326);color:#d6ff9e}
+#bStop{color:#d7dde1}#bRec{color:#e26b6b}#bRec.on{background:linear-gradient(#7a3a3a,#532626);color:#ff8d8d}
+.lcd{background:linear-gradient(#171b1d,#202528);border:1px solid #0c0e0f;border-radius:2px;color:#ffb257;box-shadow:inset 0 1px 3px #000c;font:600 17px "Consolas","Lucida Console",monospace}
+.lcd input{color:#ffb257}
+.lcd small{color:#6d777e}
+#scope{background:#15191b;border-color:#0c0e0f;border-radius:1px}
+.winbtns{gap:2px}.winbtns .tbtn{font-size:10px;padding:0 7px;letter-spacing:.2px}
+/* ---- navigateur ---- */
+#browser{background:#2a3035;border-right:1px solid #14181a}
+.bh{background:linear-gradient(#3b434a,#323a40);color:#e0a45c;font-size:10.5px;letter-spacing:.3px;border-bottom:1px solid #1a1e21}
+.bi{color:#b9c2c8;padding:2px 8px 2px 16px}.bi:hover{background:#45505a;color:#fff}
+/* ---- espace de travail & fenêtres ---- */
+#ws{background:radial-gradient(ellipse at 50% 30%,#3a4247,#262c30 75%)}
+.win{background:var(--fl-win);border:1px solid #121517;border-radius:2px;box-shadow:0 6px 20px #000b,inset 0 1px 0 #ffffff12}
+.wt{background:linear-gradient(#323a40,#283035);border-bottom:1px solid #15191b;padding:2px 4px;height:24px;gap:5px;font-size:11px}
+.wt .ttl{color:#d8dee2;font-weight:600}.wt .sub{color:#e0a45c;font-weight:400}
+.wt button,.btn{background:linear-gradient(#4b555d,#3a4248);border:1px solid #171b1e;border-radius:2px;color:#c9d1d6;padding:0 6px;height:18px;font-size:10.5px}
+.wt button:hover,.btn:hover{border-color:#171b1e;background:linear-gradient(#5b6670,#465058);color:#fff}
+.wt select{height:18px;font-size:10.5px;padding:0 2px}
+.win.flfocus{border-color:#55616a}
+.win.flfocus>.wt{background:linear-gradient(#3c454c,#2e363b)}
+.wt .wopt{width:18px;padding:0;color:#e0a45c;font-size:9px}
+.wt .wmin,.wt .wmax,.wt .x{width:18px;height:16px;padding:0;line-height:12px;background:none;border:1px solid transparent;color:#aab4bb;font-size:12px}
+.wt .wmin:hover,.wt .wmax:hover{background:#4c565e;border-color:#171b1e}
+.wt .x:hover{background:#c8463e;color:#fff;border-color:#171b1e}
+.win.collapsed{resize:none;min-height:0!important}.win.collapsed>.wb{display:none}
+.win.maxi{resize:none;border-radius:0}
+/* ---- channel rack ---- */
+#w-rack .wb{background:#3a4248}
+#rack{padding:4px 6px}
+.crow{gap:4px;padding:1px 2px;border-radius:2px;position:relative;padding-right:14px}
+.crow.sel{background:none}
+.crow::after{content:"";position:absolute;right:2px;top:50%;width:7px;height:16px;margin-top:-8px;border-radius:2px;background:#2b3236;border:1px solid #171b1e}
+.crow.sel::after{background:linear-gradient(#c6f07a,#86c13a);box-shadow:0 0 4px #a6e24a88}
+.crow .knob{width:20px;height:20px}
+.insbox{width:28px;background:#1d2225;border-color:#111416;color:#a6e24a;border-radius:1px}
+.cname{width:118px;padding:3px 7px;background:linear-gradient(#69747d,#525c64);border:1px solid #1d2225;border-left-width:5px;border-radius:2px;color:#eef2f4;font-weight:400;box-shadow:inset 0 1px 0 #ffffff22}
+.crow.sel .cname{background:linear-gradient(#7d8a94,#626e77);color:#fff}
+.steps{gap:1px}
+.st{width:18px;height:25px;border-radius:2px;background:linear-gradient(#59626a,#4a5258);border:1px solid #23292d;box-shadow:inset 0 1px 0 #ffffff14}
+.st.g4{margin-left:3px}
+.st.alt{background:linear-gradient(#715257,#5d4448)}
+.st.on{background:linear-gradient(#f4f7f8,#c9d3d8);border-color:#2b3236;box-shadow:inset 0 -2px 0 #a7b3ba,0 0 4px #ffffff33}
+.st.on.ghost{background:linear-gradient(#a9b4ba,#86929a);box-shadow:none}
+.st.prn{background:linear-gradient(#bfe3ff,#7fb4dc)}
+.st.cur{box-shadow:inset 0 -4px 0 #a6e24a}
+.rackfoot{border-top:1px solid #2a3035;background:#343b41}
+/* ---- piano roll ---- */
+#prGrid{background:#343c42}
+.prr{background:#3f484f;border-bottom-color:#323a40}.prr.b{background:#363e44}.prr.c{border-bottom-color:#1f2427}
+.pk{background:linear-gradient(90deg,#d5dade,#f3f5f6);border-bottom-color:#9aa3a9}
+.pk.b{background:linear-gradient(90deg,#15191b,#2a3034)}
+.note{border-radius:1px;border-color:#0009;box-shadow:inset 0 1px 0 #ffffff55}
+#prVelWrap{background:#262c30}
+/* ---- playlist ---- */
+.plrow{border-bottom-color:#2a3035}
+.plrow.ruler,.ruler .plth{background:#2c3338}
+.plth{background:linear-gradient(90deg,#4a545c,#414a51);border-right:1px solid #1a1e21;border-left:5px solid #59646c;font-size:10.5px}
+.lane{background-color:#394147}
+.rb{color:#9ea8af;border-left-color:#5c666e}
+.clip{border-radius:2px;border-color:#000a;box-shadow:inset 0 13px 0 rgba(255,255,255,.13)}
+/* ---- mixer ---- */
+#strips{background:#2b3236;gap:1px}
+.strip{width:60px;background:linear-gradient(#434c53,#363e44);border:1px solid #191d20;border-top:3px solid #4a545c;border-radius:1px}
+.strip.sel{background:linear-gradient(#56626b,#434c53);border-color:#191d20;border-top-color:#8fa0ab}
+.strip.master{width:74px;background:linear-gradient(#4b545b,#3a4248)}
+.snum{color:#a6e24a;font-size:10px}
+.sname{font-size:10px;color:#dfe5e9;background:#262c30;border:1px solid #171b1e;border-radius:1px;padding:1px 2px}
+.meter{background:#101315;border:1px solid #0b0d0e;border-radius:1px}
+.mfill{background:linear-gradient(#e6e64a,#5fd35f 40%)}
+.sfx{color:#e0a45c}
+#fxPanel{background:#30373c;border-left:1px solid #15191b}
+.fxh{color:#e0a45c}
+.slot{background:#272d31;border:1px solid #15191b;border-radius:1px;padding:3px}
+.slot:hover{border-color:#4f5a62}
+.knob{background:radial-gradient(circle at 40% 32%,#8a959d,#3a4248 62%,#262c30);border-color:#111416;box-shadow:0 1px 2px #0008}
+.knob::after{background:#ffb257}
+.led{background:#262c30;border-color:#0f1213}
+.led.on{background:radial-gradient(circle at 40% 35%,#d6ff9e,#86c13a);box-shadow:0 0 4px #a6e24a}
+/* ---- menus clic droit façon FL ---- */
+body .ctxm{background:#3b444a;border:1px solid #101315;border-radius:0;box-shadow:3px 5px 12px #000b;padding:2px 0;font:11px "Segoe UI",Tahoma,sans-serif;color:#d3dade;min-width:200px}
+body .ctxi{padding:3px 14px 3px 4px;border-radius:0;gap:0}
+body .ctxi:hover,body .ctxi.open{background:#62717c;color:#fff}
+body .ctxi.dis{color:#727c83}
+body .ctxi.dis:hover{background:none;color:#727c83}
+body .ctxck{width:20px;text-align:center;color:#a6e24a}
+body .ctxi:hover .ctxck{color:#fff}
+body .ctxk{color:#8f9aa2;padding-left:24px}
+body .ctxi:hover .ctxk{color:#e6ecef}
+body .ctxsep{height:1px;background:#2a3035;border-bottom:1px solid #4a545b;margin:2px 4px}
+body .ctxhead{background:#2c3338;color:#e0a45c;font-weight:600;padding:3px 10px 3px 24px;margin:-2px 0 2px;border-bottom:1px solid #1d2225}
+.ctxsw{display:inline-block;width:11px;height:11px;border:1px solid #0008;border-radius:1px;vertical-align:-1px}
